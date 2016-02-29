@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  resources :squirrels, only: [:show, :index]
+  resources :squirrels, except: [:destroy] do
+    resources :nuts, only: [:index, :create]
+    collection do
+      get 'latest'
+    end
+    member do
+      get 'detail'
+    end
+  end
+  get 'search' => 'search#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="search-bar">
+  <%= form_tag search_path do %>
+     <%= text_field_tag :q %>
+  <% end %>
+</div>
 
 <%= yield %>
 
